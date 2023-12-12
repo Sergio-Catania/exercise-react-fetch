@@ -1,16 +1,37 @@
-import 
+import React, {useState, useEffect} from "react";
+import CountryCard from './components/CountryCard';
+import SearchBar from './components/SearchBar';
 
 
-export default function App () {
+const App = () => {
+  const [countries, setCountries] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
 
-  return (
-    <div>
-      <CountryCard 
-        countryName="italy"
-        flagUrl="\uD83C\uDDEE\uD83C\uDDF9"
-        population="59554023"
-        capital= "Rome"
-        />
-    </div>
-  )
-}
+
+
+  
+
+
+      return (
+
+        <div>
+          <SearchBar 
+            value={searchValue} 
+            onChange={setSearchValue} 
+            onSearch={handleSearch} 
+          />
+          {countries.map((country, index) => (
+            <CountryCard
+              key={i}
+              countryName={country.countryName}
+              flagUrl={country.flagUrl}
+              population={country.population}
+              capital={country.capital}
+            />
+          ))}
+        </div>
+  );
+};
+
+
+export default App;
